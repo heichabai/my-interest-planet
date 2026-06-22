@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我的兴趣星球——旅行探索个人网站，发现世界的美好">
+    <title>我的兴趣星球 | 旅行探索</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 页眉导航 -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <h1>我的兴趣星球</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#explore" class="nav-link">旅行探索</a>
+                <a href="#stats" class="nav-link">数据统计</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主题横幅 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>探索世界的每一个角落</h2>
+            <p>用脚步丈量大地，用心感受世界的美好</p>
+            <a href="#explore" class="hero-btn">开始探索</a>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- 旅行探索区 -->
+    <section class="explore" id="explore">
+        <div class="container">
+            <h2 class="section-title">旅行探索</h2>
+
+            <!-- 分类筛选 -->
+            <div class="filter-bar">
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-btn active" data-category="all">全部分类</button>
+                    <button class="filter-btn" data-category="亚洲">亚洲</button>
+                    <button class="filter-btn" data-category="欧洲">欧洲</button>
+                    <button class="filter-btn" data-category="非洲">非洲</button>
+                    <button class="filter-btn" data-category="大洋洲">大洋洲</button>
+                </div>
+                <!-- 关键词搜索 -->
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 搜索目的地、国家或关键词..." autocomplete="off">
+                </div>
+            </div>
+
+            <!-- 结果统计 -->
+            <div class="result-info" id="resultInfo">
+                <span id="resultCount">共 15 个目的地</span>
+            </div>
+
+            <!-- 作品展示卡片网格 -->
+            <div class="card-grid" id="cardGrid">
+                <!-- 卡片由 JavaScript 动态生成 -->
+            </div>
+
+            <!-- 空状态提示 -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <h3>没有找到匹配的目的地</h3>
+                <p>试试其他关键词或分类吧~</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计板块 -->
+    <section class="stats" id="stats">
+        <div class="container">
+            <h2 class="section-title">旅行数据统计</h2>
+
+            <!-- 统计概览卡片 -->
+            <div class="stat-overview">
+                <div class="stat-card">
+                    <div class="stat-icon">🗺️</div>
+                    <div class="stat-number" id="totalDestinations">15</div>
+                    <div class="stat-label">目的地总数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌏</div>
+                    <div class="stat-number" id="totalContinents">4</div>
+                    <div class="stat-label">涉及大洲</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" id="avgRating">4.5</div>
+                    <div class="stat-label">平均评分</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number" id="totalDays">81</div>
+                    <div class="stat-label">旅行总天数</div>
+                </div>
+            </div>
+
+            <!-- 图表区域 -->
+            <div class="charts-grid">
+                <!-- 柱状图：各大洲旅行数量 -->
+                <div class="chart-card">
+                    <h3 class="chart-title">各大洲目的地数量</h3>
+                    <canvas id="barChart" width="400" height="300"></canvas>
+                </div>
+                <!-- 饼图：旅行类型占比 -->
+                <div class="chart-card">
+                    <h3 class="chart-title">预算等级分布</h3>
+                    <canvas id="pieChart" width="400" height="300"></canvas>
+                </div>
+                <!-- 折线图：年度旅行趋势 -->
+                <div class="chart-card">
+                    <h3 class="chart-title">年度旅行次数趋势</h3>
+                    <canvas id="lineChart" width="400" height="300"></canvas>
+                </div>
+                <!-- 标签云 -->
+                <div class="chart-card">
+                    <h3 class="chart-title">热门标签</h3>
+                    <div class="tag-cloud" id="tagCloud">
+                        <!-- 标签由 JavaScript 动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 详情弹窗 -->
+    <div class="modal-overlay" id="modalOverlay" style="display: none;">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="关闭">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- 详情内容由 JavaScript 动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop" style="display: none;" aria-label="返回顶部">
+        ↑
+    </button>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 我的兴趣星球 | 赵思捷 · 202509013020 · 25电音</p>
+            <p>用计算思维丈量世界，用AI技术记录旅途</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
